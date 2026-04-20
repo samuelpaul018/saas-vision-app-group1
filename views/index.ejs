@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= appTitle %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1><%= appTitle %></h1>
+      <p>
+        Upload an image and the server will send it to Google Cloud Vision Label Detection,
+        then return a formatted list of detected labels.
+      </p>
+
+      <div class="team-box">
+        <h2>Team Members</h2>
+        <ul>
+          <li>Anggadeep Singh Gupta</li>
+          <li>Samuel Paul Chetty</li>
+          <li>Abhinay Konuri</li>
+          <li>Lasya Uma Sri Lingala</li>
+        </ul>
+        <p class="muted">All assigned team members are listed above for submission.</p>
+      </div>
+
+      <form action="/analyze" method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="pic">Choose image file</label>
+        <input id="pic" type="file" name="pic" accept="image/*" required />
+        <button type="submit">Detect Labels</button>
+      </form>
+
+      <p class="muted">Maximum upload size: <%= maxUploadMb %> MB</p>
+    </section>
+  </main>
+</body>
+</html>

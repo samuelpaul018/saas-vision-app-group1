@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detection Results</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Label Detection Results</h1>
+      <p><strong>Uploaded file:</strong> <%= fileName %></p>
+      <p><strong>MIME type:</strong> <%= mimeType %></p>
+
+      <% if (labels.length === 0) { %>
+        <p>No labels were returned for this image.</p>
+      <% } else { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Label</th>
+              <th>Confidence</th>
+              <th>Topicality</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% labels.forEach((label) => { %>
+              <tr>
+                <td><%= label.description %></td>
+                <td><%= label.score %>%</td>
+                <td><%= label.topicality %>%</td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+
+      <a class="button-link" href="/">Analyze another image</a>
+    </section>
+  </main>
+</body>
+</html>
