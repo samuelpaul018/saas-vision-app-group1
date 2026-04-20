@@ -9,30 +9,31 @@
 <body>
   <main class="container">
     <section class="card">
+      <span class="hero-badge">Software as a Service Project</span>
       <h1><%= appTitle %></h1>
-      <p>
-        Upload an image and the server will send it to Google Cloud Vision Label Detection,
-        then return a formatted list of detected labels.
+      <p class="lead">
+        Upload an image and our server will send it to Google Cloud Vision Label Detection,
+        then return a clean, formatted list of the detected labels.
       </p>
 
       <div class="team-box">
         <h2>Team Members</h2>
         <ul>
-          <li>Anggadeep Singh Gupta</li>
+          <li>Angaddeep Singh Gupta</li>
           <li>Samuel Paul Chetty</li>
           <li>Abhinay Konuri</li>
           <li>Lasya Uma Sri Lingala</li>
         </ul>
-        <p class="muted">All assigned team members are listed above for submission.</p>
+        <p class="muted">All assigned team members are listed for submission.</p>
       </div>
 
       <form action="/analyze" method="POST" enctype="multipart/form-data" class="upload-form">
-        <label for="pic">Choose image file</label>
+        <label for="pic">Choose an image file</label>
         <input id="pic" type="file" name="pic" accept="image/*" required />
         <button type="submit">Detect Labels</button>
       </form>
 
-      <p class="muted">Maximum upload size: <%= maxUploadMb %> MB</p>
+      <p class="footer-note">Maximum upload size: <%= maxUploadMb %> MB</p>
     </section>
   </main>
 </body>

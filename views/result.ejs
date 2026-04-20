@@ -9,34 +9,47 @@
 <body>
   <main class="container">
     <section class="card">
-      <h1>Label Detection Results</h1>
-      <p><strong>Uploaded file:</strong> <%= fileName %></p>
-      <p><strong>MIME type:</strong> <%= mimeType %></p>
+      <span class="hero-badge">Analysis Complete</span>
+      <h1>Detected Labels</h1>
+      <p class="lead">
+        Google Cloud Vision successfully analyzed your uploaded image and returned the following labels.
+      </p>
 
-      <% if (labels.length === 0) { %>
-        <p>No labels were returned for this image.</p>
-      <% } else { %>
-        <table>
-          <thead>
-            <tr>
-              <th>Label</th>
-              <th>Confidence</th>
-              <th>Topicality</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% labels.forEach((label) => { %>
+      <div class="info-box">
+        <p><strong>Uploaded File:</strong> <%= fileName %></p>
+        <p class="status-good">Status: Successfully processed</p>
+      </div>
+
+      <% if (labels && labels.length > 0) { %>
+        <div class="result-box">
+          <h2>Label Annotation Results</h2>
+          <table>
+            <thead>
               <tr>
-                <td><%= label.description %></td>
-                <td><%= label.score %>%</td>
-                <td><%= label.topicality %>%</td>
+                <th>Label</th>
+                <th>Confidence</th>
+                <th>Topicality</th>
               </tr>
-            <% }) %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% labels.forEach((label) => { %>
+                <tr>
+                  <td><%= label.description %></td>
+                  <td><%= (label.score * 100).toFixed(2) %>%</td>
+                  <td><%= (label.topicality * 100).toFixed(2) %>%</td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <div class="result-box">
+          <h2>No Labels Found</h2>
+          <p>No labels were returned for this image.</p>
+        </div>
       <% } %>
 
-      <a class="button-link" href="/">Analyze another image</a>
+      <a class="button-link" href="/">Analyze Another Image</a>
     </section>
   </main>
 </body>
